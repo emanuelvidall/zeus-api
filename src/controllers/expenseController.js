@@ -1,25 +1,25 @@
-const User = require('../../models/user');
-const Expense = require('../../models/expense')
+import Expense from '../models/expense.js';
 
-module.exports = { 
-  create: async (req, res) => {
-        console.log('incoming request body: ', req.body);
-        const { value, type, quantity, desc, date } = req.body;
-        try {
-            const createExpense = await Expense.create({
-                value,
-                type,
-                quantity,
-                desc,
-                date,
-            });
-            return res.status(201).json(createExpense);
-        } catch (err) {
-            return res.status(400).json({ err: err.message });
-        }       
+const expenseController = {
+    create: 
+        async (req, res) => {
+            console.log('incoming request body: ', req.body);
+            try {
+                const createExpense = await Expense.create({
+                    value: req.body.value,
+                    type: req.body.value,
+                    quantity: req.body.value,
+                    desc: req.body.desc,
+                    date: req.body.desc,
+                });
+                return res.status(201).json(createExpense);
+            } catch (err) {
+                return res.status(400).json({ err: err.message });
+            }       
     }
 }
 
+export default expenseController;
 
 // getExpensesByUser
 // getAllExpenses
@@ -89,7 +89,7 @@ module.exports = {
 //       const id = req.params.id;
 //       const data = {
 //         valor: req.body.valor,
-//         tipo: req.body.tipo,
+//         ti: req.body.tipo,
 //         quantidade: req.body.quantidade,
 //         desc: req.body.desc,
 //         data: req.body.data,

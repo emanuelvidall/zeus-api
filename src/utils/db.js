@@ -1,5 +1,7 @@
 import mongoose, { connect } from "mongoose";
 
+// const url = `mongodb+srv://emanuelvidal:${process.env.DB_PASSWORD}@zeusdb.pte5jht.mongodb.net/?retryWrites=true&w=majority`;
+
 const url = `mongodb+srv://emanuelvidal:${process.env.DB_PASSWORD}@zeusdb.pte5jht.mongodb.net/?retryWrites=true&w=majority`;
 
 mongoose.connect(url, {useNewUrlParser: true});
@@ -18,4 +20,4 @@ async function connectDB() {
     }
   }
   
-module.exports = connectDB;
+export default connectDB;

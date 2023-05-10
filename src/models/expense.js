@@ -1,6 +1,6 @@
 import {mongoose} from 'mongoose';
 
-const costSchema = new mongoose.Schema({
+const expenseSchema = new mongoose.Schema({
     value: {
         type: Number,
         required: [true, 'nao pode ser vazio'],
@@ -13,7 +13,7 @@ const costSchema = new mongoose.Schema({
       type: Number,
       required: [true, 'nao pode ser vazio'],
     },
-    description: {
+    desc: {
       type: String,
       required: [true, 'nao pode ser vazio'],
     },
@@ -23,7 +23,7 @@ const costSchema = new mongoose.Schema({
     },
   });
 
-const Expense = mongoose.model('Expense', costSchema);
+const Expense = mongoose.model('Expense', expenseSchema);
 
-module.exports = Expense;
+export default Expense;
 
