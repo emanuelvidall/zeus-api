@@ -23,6 +23,7 @@ const costSchema = new mongoose.Schema({
     },
   });
 
-const Cost = mongoose.model('Cost', costSchema);
+const Expense = mongoose.model('Expense', costSchema);
 
-module.exports = Cost;
+module.exports = Expense;
+
