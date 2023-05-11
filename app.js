@@ -1,10 +1,10 @@
 import express from 'express';
-import { config } from 'dotenv';
+import dotenv from 'dotenv';
 import connectDB from './src/utils/db.js';
 import cors from 'cors';
 import router from './src/routes/index.js'
 
-config({ path: ".env" });
+dotenv.config();
 
 const port = 3001;
 const app = express();
