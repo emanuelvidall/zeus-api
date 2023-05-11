@@ -7,16 +7,16 @@ const expenseController = {
             try {
                 const createExpense = await Expense.create({
                     value: req.body.value,
-                    type: req.body.value,
-                    quantity: req.body.value,
+                    type: req.body.type,
+                    quantity: req.body.quantity,
                     desc: req.body.desc,
-                    date: req.body.desc,
+                    date: req.body.date,
                 });
                 return res.status(201).json(createExpense);
             } catch (err) {
                 return res.status(400).json({ err: err.message });
             }       
-    }
+    }   
 }
 
 export default expenseController;

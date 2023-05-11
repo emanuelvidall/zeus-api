@@ -1,13 +1,7 @@
 import {mongo, mongoose} from 'mongoose';
-const bcrypt = require("bcrypt");
-
+import bcrypt from "bcrypt";
 
 const userSchema = new mongoose.Schema({
-    cost: [{
-        type: mongoose.Schema.Types.ObjectId,
-        ref: 'Cost',
-        required: true,
-    }],
     name: {
         type: String,
         required: true,  
@@ -27,7 +21,7 @@ userSchema.pre("save", async function (next) {
     next();
   });
 
-const User = mongoose.model("Users", userSchema);
+const User = mongoose.model("Users", userSchema, 'users');
 
-module.exports = User;
+export default User;
 

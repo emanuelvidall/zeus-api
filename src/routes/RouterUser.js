@@ -1,9 +1,12 @@
-const express = require('express');
-const router = express.Router();
-const userController = require('../controllers/userController');
+import userController from '../controllers/userController.js';
+import express from 'express';
+import bodyParser from 'body-parser';
 
-router.get('/', userController.getAllUsers);
-router.post('/create', userController.createUser);
-router.get('/:id', userController.getUserById);
+var jsonParser = bodyParser.json()
+var urlencodedParser = bodyParser.urlencoded({ extended: false })
 
-module.exports = router;
+var router = express.Router();
+
+router.post('/create', jsonParser, userController.create);
+
+export default router;

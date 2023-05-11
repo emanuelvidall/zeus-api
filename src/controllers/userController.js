@@ -1,14 +1,19 @@
-const User = require('../../models/user');
-const Expense = require('../../models/expense')
+import User from '../models/user.js';
 
-exports.getAllUsers = async (req, res) => {
-
+const userController = {
+    create: 
+        async (req, res) => {
+            console.log('incoming request body: ', req.body);
+            try {
+                const createUser = await User.create({
+                    name: req.body.name,
+                    password: req.body.password,
+                });
+                return res.status(201).json(createUser);
+            } catch (err) {
+                return res.status(400).json({ err: err.message });
+            }       
+    }   
 }
 
-exports.createUser = async (req, res) => {
-
-}
-
-exports.getUserById = async (req, res) => {
-
-}
+export default userController;
