@@ -6,7 +6,6 @@ import jwt from 'jsonwebtoken';
 const auth = {
     create: 
         async (req, res) => {
-            console.log('incoming request body: ', req.body);
             try {
                 const createUser = await User.create({
                     name: req.body.name,
@@ -14,7 +13,6 @@ const auth = {
                     password: req.body.password,
                 });
                 return res.status(201).json(createUser);
-                console.log('usuario criado!')
             } catch (err) {
                 return res.status(400).json({ err: err.message });
             }       

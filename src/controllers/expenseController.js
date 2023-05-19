@@ -3,7 +3,6 @@ import Expense from '../models/expense.js';
 const expenseController = {
     create:
         async (req, res) => {
-            console.log('incoming request body: ', req.body);
             try {
                 const createExpense = await Expense.create({
                     value: req.body.value,
@@ -65,7 +64,6 @@ const expenseController = {
         },
     update:
         async (req, res) => {
-            console.log('incoming request body: ', req.body);
             try {
                 const id = req.params.id;
                 const data = {
