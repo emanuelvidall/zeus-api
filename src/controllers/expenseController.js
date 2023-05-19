@@ -16,8 +16,30 @@ const expenseController = {
             } catch (err) {
                 return res.status(400).json({ err: err.message });
             }       
-    }   
-}
+    },
+    list:
+        async (req, res) => {
+            try {
+                const expenses = await Expense.find();
+                const listexpenses = expenses.map(expense => expense);
+                res.json(listexpenses);
+            } catch (error) {
+                console.error(error);
+                res.status(500).json({error: 'Internal server error'});
+            }
+        },
+    view:
+        async (req, res) => {
+            try {
+                const id = req.params.id;
+                const result = await Expense.findById(id);
+                res.json(result);
+            } catch (error) {
+                console.error('Error:', error);
+                res.status(500).send('Server Error');
+            }
+        }
+    }
 
 export default expenseController;
 

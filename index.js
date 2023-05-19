@@ -1,15 +1,12 @@
 import express from 'express';
-import dotenv from 'dotenv';
 import connectDB from './src/utils/db.js';
 import cors from 'cors';
 import router from './src/routes/index.js'
 
-dotenv.config();
+export const dbpass = process.env.DB_PASSWORD;
 
 const port = 3001;
 const app = express();
-
-connectDB();
 
 app.use(cors());
 app.options('*', cors());
@@ -23,3 +20,5 @@ app.get('/', (req, res) => {
 app.listen(port, () => {
   console.log(`App running on https://localhost:${port}`);
 });
+
+connectDB();
