@@ -8,4 +8,6 @@ var urlencodedParser = bodyParser.urlencoded({ extended: false })
 
 var router = express.Router();
 
+router.get('/list', jsonParser, userController.list)
+
 export default router;

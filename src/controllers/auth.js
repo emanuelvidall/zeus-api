@@ -9,6 +9,7 @@ const auth = {
             console.log('incoming request body: ', req.body);
             try {
                 const createUser = await User.create({
+                    name: req.body.name,
                     email: req.body.email,
                     password: req.body.password,
                 });
