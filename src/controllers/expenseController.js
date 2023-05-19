@@ -85,19 +85,3 @@ const expenseController = {
 }
 
 export default expenseController;
-
-// getExpensesByUser
-// getAllExpenses
-
-
-
-// app.get('/users', async (req1, res1) => {
-//     try {
-//       const users = await User.find();
-//       const userNames = users.map(user => user);
-//       res1.json(userNames);
-//     } catch (error) {
-//       console.error(error);
-//       res1.status(500).json({error: 'Internal server error'});
-//     }
-//   });
