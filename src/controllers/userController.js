@@ -55,6 +55,17 @@ const userController = {
                 });
             }
         },
+    view:
+        async (req, res) => {
+            try {
+                const id = req.params.id;
+                const result = await User.findById(id);
+                res.json(result);
+            } catch (error) {
+                console.error('Error:', error);
+                res.status(500).send('Server Error');
+            }
+        },
 }
 
 export default userController;
