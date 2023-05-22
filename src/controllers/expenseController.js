@@ -96,6 +96,21 @@ const expenseController = {
                 res.status(500).json({ error: error.message });
             }
         },
+    type:
+        async (req, res) => {
+            try {
+                const userId = req.params.id
+                const month = req.params.month
+                const type = req.params.type
+                const expensesPerType = await Expense.find({userId: userId, month: month, type: type})
+                console.log("despesas do usuario no mes: ", expensesPerType)
+                const typeTotal = expensesPerType.reduce((total, expense) => total + expense.value, 0);
+                res.json(expensesPerType);
+            } catch (error) {
+                console.error(error);
+                res.status(500).json({ error: error.message });
+            }
+        },
 }
 
 export default expenseController;
