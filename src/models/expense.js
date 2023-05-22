@@ -21,6 +21,10 @@ const expenseSchema = new mongoose.Schema({
       type: String,
       required: [true, 'nao pode ser vazio'],
     },
+    month: {
+      type: Number,
+      required: [true, 'nao pode ser vazio'],
+    },
     userId: {
       type: mongoose.Schema.Types.ObjectId,
       ref: 'User',
