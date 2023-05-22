@@ -82,6 +82,20 @@ const expenseController = {
                 res.status(500).json({ message: 'Internal server error' });
             }
         },
+    month:
+        async (req, res) => {
+            try {
+                const userId = req.params.id
+                const month = req.params.month
+                const expensesPerMonth = await Expense.find({userId: userId, month: month})
+                console.log("despesas do usuario no mes: ",expensesPerMonth)
+                const monthTotal = expensesPerMonth.reduce((total, expense) => total + expense.value, 0);
+                res.json(monthTotal);
+            } catch (error) {
+                console.error(error);
+                res.status(500).json({ error: error.message });
+            }
+        },
 }
 
 export default expenseController;
