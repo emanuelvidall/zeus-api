@@ -10,6 +10,7 @@ const expenseController = {
                     quantity: req.body.quantity,
                     desc: req.body.desc,
                     date: req.body.date,
+                    month: req.body.month,
                     userId: req.body.userId,
                 });
                 return res.status(201).json(createExpense);
