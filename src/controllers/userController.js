@@ -1,4 +1,5 @@
 import User from '../models/user.js';
+import Expense from '../models/expense.js'
 
 const userController = {
     list:
@@ -64,6 +65,18 @@ const userController = {
             } catch (error) {
                 console.error('Error:', error);
                 res.status(500).send('Server Error');
+            }
+        },
+    expenses:
+        async (req, res) => {
+            try {
+                const userId = req.params.id
+                const expensesPerUser = await Expense.find({userId: userId})
+                console.log("despesas do usuario: ",expensesPerUser)
+                res.json(expensesPerUser);
+            } catch (error) {
+                console.error(error);
+                res.status(500).json({ error: error.message });
             }
         },
 }

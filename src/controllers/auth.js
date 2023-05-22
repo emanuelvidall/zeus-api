@@ -9,6 +9,7 @@ const auth = {
             try {
                 const createUser = await User.create({
                     name: req.body.name,
+                    dog: req.body.dog,
                     email: req.body.email,
                     password: req.body.password,
                 });

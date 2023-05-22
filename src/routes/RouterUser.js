@@ -7,7 +7,7 @@ var jsonParser = bodyParser.json();
 var router = express.Router();
 
 router.get('/list', jsonParser, userController.list);
-router.get('/view/:id', jsonParser, userController.view)
+router.get('/view/:id', jsonParser, userController.view);
 router.delete('/delete/:id', jsonParser, userController.delete);
-
+router.get('/expenses/:id', jsonParser, userController.expenses);
 export default router;

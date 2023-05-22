@@ -5,10 +5,15 @@ const userSchema = new mongoose.Schema({
     name: {
       type: String,
       required: true,  
-    },  
+    },
+    dog: {
+      type: String,
+      required: true,
+    },
     email: {
         type: String,
-        required: true,  
+        required: true,
+        unique: [true, 'este email já está cadastrado'],
     },
     password: {
         type: String,
