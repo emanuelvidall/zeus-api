@@ -87,8 +87,8 @@ const expenseController = {
             try {
                 const userId = req.params.id
                 const month = req.params.month
-                const expensesPerMonth = await Expense.find({userId: userId, month: month})
-                console.log("despesas do usuario no mes: ",expensesPerMonth)
+                const expensesPerMonth = await Expense.find({ userId: userId, month: month })
+                console.log("despesas do usuario no mes: ", expensesPerMonth)
                 const monthTotal = expensesPerMonth.reduce((total, expense) => total + expense.value, 0);
                 res.json(monthTotal);
             } catch (error) {
@@ -102,13 +102,25 @@ const expenseController = {
                 const userId = req.params.id
                 const month = req.params.month
                 const type = req.params.type
-                const expensesPerType = await Expense.find({userId: userId, month: month, type: type})
+                const expensesPerType = await Expense.find({ userId: userId, month: month, type: type })
                 console.log("despesas do usuario no mes: ", expensesPerType)
                 const typeTotal = expensesPerType.reduce((total, expense) => total + expense.value, 0);
                 res.json(expensesPerType);
             } catch (error) {
                 console.error(error);
                 res.status(500).json({ error: error.message });
+            }
+        },
+    monthlist:
+        async (req, res) => {
+            const month = req.params.month
+            try {
+                const expenses = await Expense.find({month: month});
+                const listexpenses = expenses.map(expense => expense);
+                res.json(listexpenses);
+            } catch (error) {
+                console.error(error);
+                res.status(500).json({ error: 'Internal server error' });
             }
         },
 }
