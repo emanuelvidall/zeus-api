@@ -51,7 +51,32 @@ const auth = {
             } catch (err) {
                 res.status(400).json({ err: err.message });
             }
-        }   
-}
+        },
+        validate:
+            async (req, res, next) => {
+                try {        
+                const authHeader = req.headers.authorization;
+            
+                if (!authHeader) {
+                    res.status(401).json({ err: "No token provided" });
+                    return; // Return early to prevent further execution
+                }
+            
+                const token = authHeader;
+            
+                jwt.verify(token, process.env.SECRET, (err, decoded) => {
+                    if (err) {
+                    res.status(401).json({ err: "Token inválido" });
+                    return; // Return early to prevent further execution
+                    }
+            
+                    req.userId = decoded.id;
+                    next();
+                });
+                } catch (err) {
+                res.status(400).json({ err: err.message });
+                }
+            }
+    }
 
 export default auth;

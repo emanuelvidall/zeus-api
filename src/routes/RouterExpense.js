@@ -1,11 +1,13 @@
 import expenseController from '../controllers/expenseController.js';
 import express from 'express';
 import bodyParser from 'body-parser';
+import authMiddleware from '../middleware/auth.js';
 
 var jsonParser = bodyParser.json();
-var urlencodedParser = bodyParser.urlencoded({ extended: false });
 
 var router = express.Router();
+
+router.use(authMiddleware);
 
 router.get('/list', jsonParser, expenseController.list);
 router.get('/view/:id', jsonParser, expenseController.view);

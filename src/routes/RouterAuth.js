@@ -8,6 +8,7 @@ var router = express.Router();
 
 router.post('/create', jsonParser, auth.create);
 router.post('/login', jsonParser, auth.login);
+router.get('/auth', jsonParser, auth.validate);
 
 
 export default router;
